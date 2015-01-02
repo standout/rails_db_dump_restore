@@ -1,10 +1,6 @@
 namespace :db do
   def self.dumpfile
-    "tmp/database.dump"
-  end
-
-  def dumpfile
-    self.class.dumpfile
+    RailsDbDumpRestore::DUMPFILE
   end
 
   desc "Dump remote database to #{dumpfile}"
@@ -21,6 +17,7 @@ namespace :db do
   desc "Download dumped database from remote to local"
   task download: ["db:dump"] do
     on roles(:app) do
+      dumpfile = RailsDbDumpRestore::DUMPFILE
       path = "#{current_path}/#{dumpfile}"
       puts "Fetching #{path} to #{dumpfile}"
       download! path, dumpfile
