@@ -1,6 +1,6 @@
 namespace :db do
   def self.dumpfile
-    "tmp/database.dump"
+    RailsDbDumpRestore::DUMPFILE
   end
 
   def dumpfile
@@ -9,6 +9,7 @@ namespace :db do
 
   desc "Dump database to #{dumpfile}"
   task dump: [:environment] do
+    system "mkdir -p $(dirname #{dumpfile})"
     path = "#{Rails.root}/#{dumpfile}"
     case ActiveRecord::Base.connection_config[:adapter]
     when "postgresql"
@@ -34,8 +35,6 @@ namespace :db do
 
     puts "#{Rails.env.to_s} database replaced with contents of #{dumpfile}"
   end
-
-  private
 
   def us
     ActiveRecord::Base.connection_config[:username] || ENV["USER"]
