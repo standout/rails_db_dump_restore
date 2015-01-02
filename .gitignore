@@ -6,3 +6,11 @@ test/dummy/db/*.sqlite3-journal
 test/dummy/log/*.log
 test/dummy/tmp/
 test/dummy/.sass-cache
+test/dummy-repo/
+test/dummy-deploy/*/revisions.log
+test/dummy-deploy/*/repo
+test/dummy-deploy/*/shared/bin
+test/dummy-deploy/*/shared/bundle
+test/dummy-deploy/*/shared/public/assets
+test/dummy-deploy/*/releases
+test/dummy-deploy/*/current
