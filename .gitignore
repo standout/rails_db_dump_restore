@@ -14,3 +14,4 @@ test/dummy-deploy/*/shared/bundle
 test/dummy-deploy/*/shared/public/assets
 test/dummy-deploy/*/releases
 test/dummy-deploy/*/current
+Gemfile.lock
