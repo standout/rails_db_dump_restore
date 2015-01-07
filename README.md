@@ -27,29 +27,13 @@ Add `require 'capistrano/rails_db_dump_restore'` to your `Capfile`
 ## Quirks
 Only works with `postgresql` and `mysql2` database adapters as of now. You should add support for others.
 
-## Testing the cap db:pull task
-`test/dummy` has been set up to deploy with capistrano locally to `test/dummy-deploy`
+## Dummy
+We have a dummy app in another repo that is used for testing out this gem
+Make sure to clone it beside the gem repo
 ```bash
-cd test/dummy
-bundle exec cap postgres deploy
-RAILS_ENV=postgres bundle exec cap postgres db:pull
-```
-
-```bash
-cd test/dummy
-bundle exec cap mysql deploy
-RAILS_ENV=mysql bundle exec cap mysql db:pull
-```
-Or use these rake tasks
-
-`rake dummy:postgres`
-
-`rake dummy:mysql`
-
-## Testing databases
-You need to have working postgres and mysql installation on your machine.
-You also need to create the databases.
-```bash
-(cd test/dummy && RAILS_ENV=postgres rake db:create)
-(cd test/dummy && RAILS_ENV=mysql    rake db:create)
+cd ..
+git clone git@github.com:standout/rails_db_dump_restore_dummy
+cd rails_db_dump_restore_dummy
+bundle
+rake dummy
 ```
