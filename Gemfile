@@ -12,11 +12,3 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
-
-gem 'capistrano', '~> 3.3.5'
-gem 'capistrano-bundler', '~> 1.1.3'
-gem 'capistrano-rails', '~> 1.1.2'
-gem 'capistrano-rbenv', '~> 2.0.2'
-gem 'pg'
-gem 'mysql2'
-gem 'rails', '4.2.0'
