@@ -1,27 +1,27 @@
 module RailsDbDumpRestore
   class Database
     def dump
-      system "mkdir -p $(dirname #{dumpfile})"
+      system "mkdir -p $(dirname '#{dumpfile}')"
       path = "#{Rails.root}/#{dumpfile}"
       case ActiveRecord::Base.connection_config[:adapter]
       when "postgresql"
         args = "--clean --no-owner --no-privileges"
 
         run """
-          PGPASSWORD=#{password}
+          PGPASSWORD='#{password}'
           pg_dump #{args}
-          --host=#{host}
-          --username=#{username}
-          --dbname=#{database}
-          --file=#{path}
+          --host='#{host}'
+          --username='#{username}'
+          --dbname='#{database}'
+          --file='#{path}'
         """
       when "mysql2"
         run """
-          MYSQL_PWD=#{password}
+          MYSQL_PWD='#{password}'
           mysqldump
-          --host=#{host}
-          --user=#{username}
-          #{database} > #{path}
+          --host='#{host}'
+          --user='#{username}'
+          '#{database}' > '#{path}'
         """
       end
 
