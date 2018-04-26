@@ -11,6 +11,7 @@ module RailsDbDumpRestore
           PGPASSWORD='#{password}'
           pg_dump #{args}
           --host='#{host}'
+          --port=#{port}
           --username='#{username}'
           --dbname='#{database}'
           --file='#{path}'
@@ -20,6 +21,7 @@ module RailsDbDumpRestore
           MYSQL_PWD='#{password}'
           mysqldump
           --host='#{host}'
+          --port=#{port}
           --user='#{username}'
           '#{database}' > '#{path}'
         """
@@ -36,6 +38,7 @@ module RailsDbDumpRestore
           PGPASSWORD=#{password}
           psql
           --host=#{host}
+          --port=#{port}
           --username=#{username}
           --dbname=#{database}
           --file=#{path}
@@ -45,6 +48,7 @@ module RailsDbDumpRestore
           MYSQL_PWD=#{password}
           mysql
           --host=#{host}
+          --port=#{port}
           --user=#{username}
           #{database} < #{path}
         """
@@ -71,6 +75,10 @@ module RailsDbDumpRestore
 
     def host
       ActiveRecord::Base.connection_config[:host]
+    end
+
+    def port
+      ActiveRecord::Base.connection_config[:port]
     end
 
     def username
